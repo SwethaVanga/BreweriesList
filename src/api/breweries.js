@@ -13,10 +13,3 @@ export const fetchBreweries = async (queryParams) => {
 	return merged
 }
 
-//Given a string
-//Return the queyrParams for the specific fetch
-expost const getQueryParams 
-
-
-export const getBreweries 
-//The method that sues both fetch and getQueyrParms to return the breweries sorted and filtered as requested
