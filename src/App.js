@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
+import { useDispatch } from "react-redux"
+import { loadBreweries } from "./store/actions/breweries"
+import {
+  BrowserRouter,
+  Switch,
+  Route
+} from "react-router-dom";
 import './App.css';
 
+import Breweries from "./containers/Breweries";
+import SingleBrewery from "./containers/SingleBrewery";
+
 function App() {
+  const dispatch = useDispatch()
+  /**
+   * Initial load the breweries 
+   */
+  useEffect(() => {
+    dispatch(loadBreweries())
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Breweries} />
+          <Route path="/:slug" exact component={SingleBrewery} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

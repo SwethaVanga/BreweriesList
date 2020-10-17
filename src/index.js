@@ -1,12 +1,22 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import promiseMiddleware from 'redux-promise';
 import * as serviceWorker from './serviceWorker';
+import rootReducer from './store/reducers'
+
+const middleware = applyMiddleware(promiseMiddleware)
+
+const store = createStore(rootReducer, {breweries: []}, middleware)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
