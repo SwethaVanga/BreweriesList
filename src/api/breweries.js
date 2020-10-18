@@ -3,13 +3,13 @@
  */
 const sortOptions = {
 	"name": {
-		desc: "-name", asc: "name"
+		desc: "-name", asc: "+name"
 	},
 	"type": {
-		desc: "-type", asc: "type"
+		desc: "-type", asc: "+type"
 	},
 	"state": {
-		desc: "-state", asc: "state"
+		desc: "-state", asc: "+state"
 	}
 }
 
@@ -35,9 +35,9 @@ export const fetchBreweries = async (queryParams) => {
 		* @params {} sortType, direction
 	*/
 
-export const getQueryParams = (sortType, description) => {
+export const getQueryParams = (sortType, direction) => {
 	try {
-		return `sort=${sortOptions[sortType][description]}`
+		return `sort=${sortOptions[sortType][direction]}`
 	} catch (err) {
 		return ""
 	}
@@ -49,7 +49,6 @@ export const getQueryParams = (sortType, description) => {
 	*/
 
 export const getBreweries = async (sortType, desc) => {
-	console.log(sortType, desc)
 	const queryParams = getQueryParams(sortType, desc)
 	const breweries = await fetchBreweries(queryParams)
 
