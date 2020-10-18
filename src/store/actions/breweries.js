@@ -1,20 +1,20 @@
 import {LOAD_BREWERIES} from "../types/breweries";
+import { getBreweries } from "../../api/breweries";
 
 /**
  * Loads the breweries based on types
  * @param {*} type 
  */
-export const loadBreweries = async (type) => {
+export const loadBreweries = async (sortType, direction) => {
 
     //based on the type, cahnge the
     //50 resutls
-    const response = await fetch("https://api.openbrewerydb.org/breweries");
-    const merged = await response.json();
+    const data = await getBreweries(sortType, direction)
 
     //REWRITE TO USER api/breweries
 
     return {
         type: LOAD_BREWERIES,
-        payload: merged
+        payload: data
     }
 };
