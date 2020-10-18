@@ -1,8 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle }  from "styled-components";
+
 
 export const GlobalStyle = createGlobalStyle`
   table {
-  width: 100%;
+	margin: 50px;
   border: 1px solid black;
   border-collapse: collapse;
   th,
@@ -19,4 +20,8 @@ export const GlobalStyle = createGlobalStyle`
     text-align: left;
   }
   }
+`
+
+export const Button  = styled.button`
+	border: none;
 `

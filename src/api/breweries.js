@@ -1,16 +1,16 @@
 /**
  * mapping of sort options 
  */
-const sortOptions = { 
-  "name": {
-    desc: "-name", asc: "+name"
-  },
-  "type": {
-    desc: "-type", asc: "+type"
-  },
-  "state": {
-    desc: "-state", asc: "+state"
-  }
+const sortOptions = {
+	"name": {
+		desc: "-name", asc: "name"
+	},
+	"type": {
+		desc: "-type", asc: "type"
+	},
+	"state": {
+		desc: "-state", asc: "state"
+	}
 }
 
 
@@ -30,19 +30,28 @@ export const fetchBreweries = async (queryParams) => {
 	return merged;
 }
 
-//Given a string
-//Return the queyrParams for the specific fetch
-export const getQueryParams = (sortType, direction = "asc") => {
-  try{
-		return `sort=${sortOptions[sortType][direction]}`
-  } catch (err) {
-    return ""
-  }
+/**
+		* Given a string - Return the queryParams for the specific fetch
+		* @params {} sortType, direction
+	*/
+
+export const getQueryParams = (sortType, description) => {
+	try {
+		return `sort=${sortOptions[sortType][description]}`
+	} catch (err) {
+		return ""
+	}
 }
 
-export const getBreweries = async (sortType, desc) => {
-  const queryParams = getQueryParams(sortType, desc)
-  const breweries = await fetchBreweries(queryParams)
 
-  return breweries
+/**
+		* Combine sort and Fetch
+	*/
+
+export const getBreweries = async (sortType, desc) => {
+	console.log(sortType, desc)
+	const queryParams = getQueryParams(sortType, desc)
+	const breweries = await fetchBreweries(queryParams)
+
+	return breweries
 }

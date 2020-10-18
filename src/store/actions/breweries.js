@@ -10,9 +10,6 @@ export const loadBreweries = async (sortType, direction) => {
     //based on the type, cahnge the
     //50 resutls
     const data = await getBreweries(sortType, direction)
-
-    //REWRITE TO USER api/breweries
-
     return {
         type: LOAD_BREWERIES,
         payload: data
