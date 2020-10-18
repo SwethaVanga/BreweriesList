@@ -1,9 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-
 export const GlobalStyle = createGlobalStyle`
   table {
-	margin: 50px;
+    margin: 50px;
     border: 1px solid black;
     border-collapse: collapse;
   th,
@@ -23,5 +22,5 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Button = styled.button`
-	border: none;
+    border: none;
 `

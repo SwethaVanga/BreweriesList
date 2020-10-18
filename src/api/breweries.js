@@ -18,7 +18,7 @@ const sortOptions = {
  * Retrieves 100 breweries given the query params
  * @param {string} queryParams - stringified params to be used with the api
  * Read here for examples: https://www.openbrewerydb.org/documentation/01-listbreweries
- */
+*/
 
 export const fetchBreweries = async (queryParams) => {
 	const response1 = await fetch(`https://api.openbrewerydb.org/breweries?page=1&${queryParams}&per_page=50`);
@@ -33,7 +33,7 @@ export const fetchBreweries = async (queryParams) => {
 /**
 		* Given a string - Return the queryParams for the specific fetch
 		* @params {} sortType, direction
-	*/
+*/
 
 export const getQueryParams = (sortType, direction) => {
 	try {
@@ -46,7 +46,7 @@ export const getQueryParams = (sortType, direction) => {
 
 /**
 		* Combine sort and Fetch
-	*/
+*/
 
 export const getBreweries = async (sortType, desc) => {
 	const queryParams = getQueryParams(sortType, desc)

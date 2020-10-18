@@ -7,7 +7,7 @@ import { getBreweries } from "../../api/breweries";
  */
 export const loadBreweries = async (sortType, direction) => {
 
-    //based on the sorttype, change the direction
+    //based on the sorttype and direction- chnages to asc and desc
     //50 resutls
     const data = await getBreweries(sortType, direction)
     return {
